@@ -15,7 +15,7 @@ public class CompanyController {
     @GetMapping("/companies")
     public String list(HttpServletRequest request) {
         List<Company> companyList = companyService.기업리스트();
-        request.setAttribute("companyList", companyList);
+        request.setAttribute("models", companyList);
         return "company/list";
     }
 }
