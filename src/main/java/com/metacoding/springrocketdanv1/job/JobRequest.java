@@ -6,7 +6,6 @@ import com.metacoding.springrocketdanv1.jobTechStack.JobTechStack;
 import com.metacoding.springrocketdanv1.salaryRange.SalaryRange;
 import com.metacoding.springrocketdanv1.techStack.TechStack;
 import com.metacoding.springrocketdanv1.workField.WorkField;
-import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
@@ -25,10 +24,9 @@ public class JobRequest {
         private Integer workFieldId;
         private String careerLevel;
         private Integer salaryRangeId;
-        private Integer companyId; // 일단 mustache에서 받아옴. 나중에 sessionUser 에서 가져올 수 있음
-        private List<Integer> techStacks;
+        private List<Integer> techStackIds;
 
-        public Job toEntity() {
+        public Job toEntity(Integer companyId) {
             Job job = Job.builder()
                     .title(title)
                     .description(description)
@@ -51,8 +49,8 @@ public class JobRequest {
                             .build())
                     .build();
 
-            for (Integer techStackId : techStacks) {
-                job.getJobTechStackList().add(
+            for (Integer techStackId : techStackIds) {
+                job.getJobTechStacks().add(
                         JobTechStack.builder()
                                 .job(job)
                                 .techStack(TechStack.builder()
@@ -64,5 +62,20 @@ public class JobRequest {
 
             return job;
         }
+    }
+
+    @Data
+    public static class JobUpdateDTO {
+        private String title;
+        private String description;
+        private String location;
+        private String employmentType;
+        private String deadline;
+        private String status;
+        private Integer jobGroupId;
+        private Integer workFieldId;
+        private String careerLevel;
+        private Integer salaryRangeId;
+        private List<Integer> techStackIds;
     }
 }
