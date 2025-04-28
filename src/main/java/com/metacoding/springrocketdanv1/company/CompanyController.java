@@ -2,7 +2,7 @@ package com.metacoding.springrocketdanv1.company;
 
 import com.metacoding.springrocketdanv1.techStack.TechStack;
 import com.metacoding.springrocketdanv1.techStack.TechStackRepository;
-import com.metacoding.springrocketdanv1.user.User;
+import com.metacoding.springrocketdanv1.user.UserResponse;
 import com.metacoding.springrocketdanv1.workField.WorkField;
 import com.metacoding.springrocketdanv1.workField.WorkFieldRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,6 +25,8 @@ public class CompanyController {
     private final CompanyService companyService;
     private final WorkFieldRepository workFieldRepository;
     private final TechStackRepository techStackRepository;
+    private final CompanyRepository companyRepository;
+
 
     @GetMapping("/company/{id}")
     public String detail(@PathVariable("id") Integer id, Model model) {
@@ -41,7 +43,7 @@ public class CompanyController {
     }
 
     @GetMapping("/company/save-form")
-    public String saveForm(Model model) {
+    public String saveForm(HttpSession session, Model model) {
         List<WorkField> workFields = workFieldRepository.findAll();
         List<TechStack> techStacks = techStackRepository.findAll();
 
@@ -53,8 +55,38 @@ public class CompanyController {
 
     @PostMapping("/company/save")
     public String save(@ModelAttribute CompanyRequest.CompanySaveDTO requestDTO, HttpSession session) {
-        User sessionUser = (User) session.getAttribute("sessionUser");
+        UserResponse.SessionUserDTO sessionUser = (UserResponse.SessionUserDTO) session.getAttribute("sessionUser");
         Company savedCompany = companyService.기업등록(requestDTO, sessionUser);
         return "redirect:/company/" + savedCompany.getId();
+    }
+
+    @GetMapping("/company/update-form")
+    public String updateForm(HttpSession session, Model model) {
+        // 1. 세션에서 로그인한 사용자 꺼내기
+        UserResponse.SessionUserDTO sessionUser = (UserResponse.SessionUserDTO) session.getAttribute("sessionUser");
+
+        if (sessionUser == null) {
+            throw new RuntimeException("로그인이 필요합니다."); // 세션 없으면 막기
+        }
+
+        // 2. 세션에 유저 저장
+        session.setAttribute("sessionUser", sessionUser);
+
+        // 3. 유저 ID를 이용해서 내 기업 정보 조회
+        CompanyResponse.UpdateFormDTO dto = companyService.내기업조회(sessionUser.getId());
+
+        model.addAttribute("model", dto);
+        return "company/update-form";
+    }
+
+
+    @PostMapping("/company/update")
+    public String update(@ModelAttribute CompanyRequest.UpdateDTO requestDTO, HttpSession session) {
+
+        UserResponse.SessionUserDTO sessionUser = (UserResponse.SessionUserDTO) session.getAttribute("sessionUser");
+
+        companyService.기업수정(requestDTO);
+
+        return "redirect:/company/" + requestDTO.getId();
     }
 }
