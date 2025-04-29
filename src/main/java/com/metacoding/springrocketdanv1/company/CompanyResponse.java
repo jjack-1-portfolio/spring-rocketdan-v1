@@ -99,9 +99,9 @@ public class CompanyResponse {
         private String careerLevel;
         private String createdAt;
         private String status;
-        // private boolean isAccepted; // 합격 or 채용 확정
-        // private boolean isRejected; // 탈락
-        private boolean isPending;
+        private boolean isAccepted; // 합격
+        private boolean isRejected; // 탈락
+        private boolean isPending;  // 접수 or 검토중
 
         public CompanyManageResumeDTO(String username, String resumeTitle, String careerLevel, LocalDateTime createdAt, String status) {
             this.username = username;
@@ -109,10 +109,9 @@ public class CompanyResponse {
             this.careerLevel = careerLevel;
             this.createdAt = createdAt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
             this.status = status;
-//            this.isAccepted = "합격".equals(status) || "채용 확정".equals(status);
-//            this.isRejected = "탈락".equals(status);
+            this.isAccepted = "합격".equals(status);
+            this.isRejected = "불합격".equals(status);
             this.isPending = "접수".equals(status) || "검토".equals(status);
-
         }
     }
 

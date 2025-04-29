@@ -10,10 +10,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,7 +22,6 @@ public class CompanyController {
     private final CompanyService companyService;
     private final WorkFieldRepository workFieldRepository;
     private final TechStackRepository techStackRepository;
-    private final CompanyRepository companyRepository;
 
 
     @GetMapping("/company/{id}")
@@ -134,10 +130,22 @@ public class CompanyController {
         return "company/manage-job";
     }
 
-    @GetMapping("/company/job/{id}")
-    public String manageDetail(@PathVariable("id") Integer jobId, Model model) {
-        CompanyResponse.CompanyManageResumePageDTO respDTO = companyService.지원자조회(jobId);
-        model.addAttribute("model", respDTO);
+    @GetMapping("/company/job/{jobId}")
+    public String manageDetail(@PathVariable Integer jobId,
+                               @RequestParam(required = false) String status,
+                               Model model) {
+        if (status == null || status.isBlank()) {
+            status = "접수";
+        }
+
+        CompanyResponse.CompanyManageResumePageDTO dto = companyService.지원자조회(jobId, status);
+        model.addAttribute("model", dto);
+
+        model.addAttribute("isStatus접수", status.equals("접수"));
+        model.addAttribute("isStatus검토", status.equals("검토"));
+        model.addAttribute("isStatus합격", status.equals("합격"));
+        model.addAttribute("isStatus불합격", status.equals("불합격"));
+
         return "company/manage-resume";
     }
 }
