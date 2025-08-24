@@ -1,15 +1,162 @@
-# 휴먼클라우드 웹 - 미니 프로젝트 1 : 1조 - Rocketdan
+# 구인 구직 플랫폼
 
-<br/>
-
-- 자바와 스프링부트, HTML/CSS를 활용한 웹 서버 제작 프로젝트입니다.
-- 전체 개발 기간 : 2025. 04. 11 ~ 2025. 04. 30
-
-<br/>
+<h2>RocketDan</h2>
+> 구인구직 플랫폼 ‘로켓펀치’를 모티브로 제작한 개인/기업 대상 이력관리 및 채용공고 관리 플랫폼 입니다.
 
 ![Main 화면](docs/images/main.png)
 
-# 👥 팀 멤버
+<br/>
+
+## 프로젝트 시연 영상
+
+<video src="https://github.com/user-attachments/assets/ca07f9b6-24f2-4ab2-bdc5-d84a3115be35" controls width="600"></video>
+
+<br/>
+
+## 목차
+
+1. [🗓️ 개발 기간 및 참여 인원](#개발기간및참여인원)
+2. [🔚 회고](#회고)
+3. [🗂️ ERD](#erd)
+4. [💡 주요 기능](#주요기능)
+5. [✍️ 개인 기여도 및 역할](#개인기여도및역할)
+6. [👥 팀원](#팀원)
+7. [🛠️ 기술 스택](#기술스택)
+8. [🧩 문제 해결 경험](#문제해결경험)
+
+<a id="개발기간및참여인원"></a>
+
+## 🗓️ 개발 기간 및 참여 인원
+
+- 기간: 2025.04.11 ~ 2025.04.30
+- 인원: 5인 팀 프로젝트
+
+<a id="회고"></a>
+
+## 🔚 회고
+
+### **1️⃣ 협업의 어려움을 느끼다**
+
+**1-1 화면 설계**
+
+모티브를 할 사이트의 이미지를 가져와서 이미지 설계를 하는데 정해진 컨벤션이 없어서 각각의 팀원마다 이미지를 다르게 가져왔다.
+
+[풀사이즈]
+![회고1-1](docs/images/회고1-1.png)
+
+[핏사이즈]
+![회고1-2](docs/images/회고1-2.png)
+가져온 이미지가 한명은 브라우저 풀사이즈로 이미지를 만들어 왔고 다른 한명은 화면에 보여지는 부분만 잘라서 이미지를 만들어 왔다.
+
+나는 만들어진 이미지의 비율이 다르더라도 알아서 잘 만들 수 있을거라고 생각했다. 나중에 선생님에게 피드백을 받을 때 "설계된 이미지가 재각각이면 팀원들이 혼란스러울 수 있다. 통일되게 맞춰라" 라고 하여서 이후
+모든 이미지를 풀사이즈로 통일 하였다.
+
+[풀사이즈]
+![회고1-2](docs/images/회고1-3.png)
+
+하지만 이 풀사이즈에도 함정이 있었는데 개발에 사용하는 모니터의 비율이 다르면 같은 풀사이즈라도 차이가 있었다. 그래서 팀원들에게 이미지 설계는 동일한 모니터를 사용하는 학원에서 끝내달라고 요청하였다.
+
+**1-2 화면 제작**
+
+화면에서 공통부분으로 사용할 프레임을 만들고 내부의 요소에 각자 만든 html을 넣어달라고 부탁하였다.
+
+[부탁한 내용]
+
+```html
+<!-- 헤더 끝 -->
+
+<!-- 껍데기 박스 이 안에 넣어서 코드 작성해 주세요
+            삭제하지 말아주세요 -->
+<div class="bg-light py-5"></div>
+
+<!-- 푸터 시작 -->
+```
+
+[돌아온 결과]
+
+```html
+<!-- 헤더 끝 -->
+
+<!-- 껍데기 박스 이 안에 넣어서 코드 작성해 주세요
+            삭제하지 말아주세요 -->
+<div class="bg-light py-5">
+    <html></html>
+</div>
+
+<!-- 푸터 시작 -->
+----------------------------------------------------
+
+<!-- 헤더 끝 -->
+
+<!-- 껍데기 박스 이 안에 넣어서 코드 작성해 주세요
+            삭제하지 말아주세요 -->
+<div class="bg-light py-5">
+    <style></style>
+    <div></div>
+</div>
+
+<!-- 푸터 시작 -->
+```
+
+명확하게 div 태그로 된 내부 그림만 넣어달라고 부탁하지 않아서 각자 넣어주는 요소가 다른 한명은 html 태그를 통째로 넣은 사람이 있고 누구는 style + div 를 넣어준 사람이 있었다. 그래서 다시 div
+내부에 div 로 만든 내부 요소만 넣고 스타일은 위에 추가해 달라고 수정을 부탁하였다. 다음부턴 요구 사항을 좀 더 구체적으로 말해야겠다.
+
+### **2️⃣ 아쉬움을 다음 도전의 동력으로**
+
+이번 프로젝트에서는 역량과 시간 부족으로 인해 검색, 페이징, 이미지 업로드, 알림 등을 적용하지 못하였다. 팀원들의 역량을 제대로 파악하지 못하였고 임무 분담을 적절하게 하지 못하였다고 생각한다. 다음
+프로젝트에서는 팀원들의 역량을 잘 파악하고 임무분담을 잘 해야할 것 같다.
+
+<br/>
+
+<a id="erd"></a>
+
+## 🗂️ ERD
+
+![table](docs/images/table.png)
+
+<a id="주요기능"></a>
+
+## 💡 주요 기능
+
+### 공통
+
+- 회원가입, 로그인, 로그아웃
+- 게시판 - 등록, 수정, 삭제
+- 게시판 목록 보기
+
+### 유저
+
+- 이력서 - 등록, 수정, 삭제
+- 이력서 목록 보기
+- 이력서 상세 보기
+- 이력서 지원 하기
+- 이력서 지원 내역
+- 공고 북마크
+
+### 기업
+
+- 기업 - 등록, 수정, 삭제
+- 기업 목록 보기
+- 기업 상세 보기
+- 채용공고 - 등록, 수정, 삭제
+- 채용공고 목록 보기
+- 채용공고 상세 보기
+- 이력서 지원 받기
+- 이력서 지원 응답
+
+<a id="개인기여도및역할"></a>
+
+## ✍️ 개인 기여도 및 역할
+
+| 기능 영역       | 세부 기능        | 기여 내용                                              |
+|-------------|--------------|----------------------------------------------------|
+| (기업) 공고 정보  | 등록 / 수정      | 공고 정보 Create, Update API 구현 및 응답 DTO 설계            |
+| (개인) 이력서 정보 | 보기 / 등록 / 수정 | 이력서 목록 Read, 이력서 Create, Update API 구현 및 응답 DTO 설계 |
+| (개인) 공고 지원  | 공고 지원 등록     | 공고 지원 Create API 구현 및 응답 DTO 설계                    |
+
+<a id="팀원"></a>
+
+## 👥 팀원
 
 | 이름  | 역할 | GitHub                                       |
 |-----|----|----------------------------------------------|
@@ -36,7 +183,6 @@
     </tr>
 </table>
 
-
 ## 🧰 개발 환경
 
 <table>
@@ -56,385 +202,17 @@
     </tr>
 </table>
 
-# 📋 프로젝트 업무 분담
+<a id="문제해결경험"></a>
 
-<table style="width: 100%; text-align: start; font-size: 16px; border-collapse: collapse;">
-    <thead style="background-color: #f2f2f2;">
-        <tr>
-            <th style="padding: 10px; border: 1px solid #ddd;">담당자</th>
-            <th style="padding: 10px; border: 1px solid #ddd;">프로젝트 업무 분담</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">최재원</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">
-                <ul>
-                    <li>프로젝트 계획 및 관리</li>
-                    <li>팀 리딩 및 커뮤니케이션</li>
-                    <li>헤더 및 네비게이션 개발</li>
-                    <li>이력서 관련 페이지 및 기능 개발</li>
-                    <li>채용공고 관련 페이지 및 기능 개발</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">김건우</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">
-                <ul>
-                    <li>기업 관련 페이지 및 기능 개발</li>
-                    <li>채용공고 관련 페이지 및 기능 개발</li>
-                    <li>유저의 공고 북마크 기능 개발</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">김세리</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">
-                <ul>
-                    <li>채용공고 관련 페이지 및 기능 개발</li>
-                    <li>게시판 관련 페이지 및 기능 개발</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">이연호</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">
-                <ul>
-                    <li>로그인 관련 페이지 및 기능 개발</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td style="padding: 10px; border: 1px solid #ddd;">조하은</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">
-                <ul>
-                    <li>이력서 관련 페이지 및 기능 개발</li>
-                    <li>더미 데이터 이미지 등록</li>
-                </ul>
-            </td>
-        </tr>
-    </tbody>
-</table>
+## 🧩 문제 해결 경험
 
-# 주요 기능
+### 💬 문제 : 복수의 기술 스택을 선택하고 요청 DTO 에 맵핑하는 방법
 
-### 공통
-- 회원가입, 로그인
-- 게시판 - 등록, 수정, 삭제
-- 게시판 목록 보기
-- 유효성 검사
-- 인증 체크
+- **문제 상황**: input type=”checkbox” 를 사용할 때 1개 이상의 체크박스 선택 시 나머지 체크박스의 value 값을 요청 DTO 에 맵핑한는 방법을 모름. 1개일 때만 가져오는 방법만
+  알고 있는 상태
+- **해결 방법**:
+    - gpt 를 사용해서 찾아봄
+    - 같은 name 으로 1개 이상의 value 값이 존재하면 요청 DTO 에서 리스트로 맵핑을 받을 수 있음
 
-### 유저
-- 이력서 - 등록, 수정, 삭제
-- 이력서 목록 보기
-- 이력서 상세 보기
-- 이력서 지원 하기
-- 이력서 지원 내역
-- 공고 북마크
-
-### 기업
-- 기업 - 등록, 수정, 삭제
-- 기업 목록 보기
-- 기업 상세 보기
-- 채용공고 - 등록, 수정, 삭제
-- 채용공고 목록 보기
-- 채용공고 상세 보기
-- 이력서 지원 받기
-- 이력서 지원 응답
-
-# 테이블 구조
-
-![table](docs/images/table.png)
-
-# 테이블 생성
-
-### application_tb
-
-```sql
-create table application_tb
-(
-    company_id integer,
-    id         integer generated by default as identity,
-    job_id     integer,
-    resume_id  integer,
-    user_id    integer,
-    created_at timestamp(6),
-    status     varchar(255),
-    primary key (id),
-    constraint uk_user_company unique (user_id, company_id)
-)
-```
-
-### board_tb
-
-```sql
-create table board_tb
-(
-    id         integer generated by default as identity,
-    created_at timestamp(6),
-    content    varchar(255),
-    password   varchar(255),
-    title      varchar(255),
-    primary key (id)
-)
-```
-
-### career_tb
-
-```sql
-create table career_tb
-(
-    id           integer generated by default as identity,
-    resume_id    integer,
-    created_at   timestamp(6),
-    company_name varchar(255),
-    end_date     varchar(255),
-    start_date   varchar(255),
-    primary key (id)
-)
-```
-
-### certification_tb
-
-```sql
-create table certification_tb
-(
-    id          integer generated by default as identity,
-    resume_id   integer,
-    created_at  timestamp(6),
-    issued_date varchar(255),
-    issuer      varchar(255),
-    name        varchar(255),
-    primary key (id)
-)
-```
-
-### company_tb
-
-```sql
-create table company_tb
-(
-    id              integer generated by default as identity,
-    user_id         integer unique,
-    work_field_id   integer,
-    created_at      timestamp(6),
-    address         varchar(255),
-    business_number varchar(255),
-    ceo             varchar(255),
-    contact_manager varchar(255),
-    email           varchar(255),
-    homepage_url    varchar(255),
-    info_image_url  varchar(255),
-    introduction    text,
-    logo_image_url  varchar(255),
-    name_en         varchar(255),
-    name_kr         varchar(255),
-    one_line_intro  varchar(255),
-    phone           varchar(255),
-    start_date      varchar(255),
-    primary key (id)
-)
-```
-
-### company_tech_stack_tb
-
-```sql
-create table company_tech_stack_tb
-(
-    company_id    integer,
-    id            integer generated by default as identity,
-    tech_stack_id integer,
-    primary key (id)
-)
-```
-
-### job_bookmark_tb
-
-```sql
-create table job_bookmark_tb
-(
-    id         integer generated by default as identity,
-    job_id     integer,
-    user_id    integer,
-    created_at timestamp(6),
-    primary key (id),
-    constraint uk_job_user unique (job_id, user_id)
-)
-```
-
-### job_group_tb
-
-```sql
-create table job_group_tb
-(
-    id   integer generated by default as identity,
-    name varchar(255),
-    primary key (id)
-)
-```
-
-### job_tb
-
-```sql
-create table job_tb
-(
-    company_id      integer,
-    id              integer generated by default as identity,
-    job_group_id    integer,
-    salary_range_id integer,
-    work_field_id   integer,
-    created_at      timestamp(6),
-    updated_at      timestamp(6),
-    career_level    varchar(255),
-    deadline        varchar(255),
-    description     text,
-    employment_type varchar(255),
-    location        varchar(255),
-    status          varchar(255),
-    title           varchar(255),
-    primary key (id)
-)
-```
-
-### job_tech_stack_tb
-
-```sql
-create table job_tech_stack_tb
-(
-    id            integer generated by default as identity,
-    job_id        integer,
-    tech_stack_id integer,
-    primary key (id)
-)
-```
-
-### resume_bookmark_tb
-
-```sql
-create table resume_bookmark_tb
-(
-    company_id integer,
-    id         integer generated by default as identity,
-    resume_id  integer,
-    created_at timestamp(6),
-    primary key (id),
-    constraint uk_resume_company unique (resume_id, company_id)
-)
-```
-
-### resume_tb
-
-```sql
-create table resume_tb
-(
-    id              integer generated by default as identity,
-    is_default      boolean,
-    job_group_id    integer,
-    salary_range_id integer,
-    user_id         integer,
-    created_at      timestamp(6),
-    birthdate       varchar(255),
-    career_level    varchar(255),
-    education       varchar(255),
-    enrollment_date varchar(255),
-    gender          varchar(255),
-    graduation_date varchar(255),
-    graduation_type varchar(255),
-    major           varchar(255),
-    phone           varchar(255),
-    portfolio_url   varchar(255),
-    summary         text,
-    title           varchar(255),
-    primary key (id)
-)
-```
-
-### resume_tech_stack_tb
-
-```sql
-create table resume_tech_stack_tb
-(
-    id            integer generated by default as identity,
-    resume_id     integer,
-    tech_stack_id integer,
-    primary key (id)
-)
-```
-
-### salary_range_tb
-
-```sql
-create table salary_range_tb
-(
-    id         integer generated by default as identity,
-    max_salary integer,
-    min_salary integer,
-    label      varchar(255),
-    primary key (id)
-)
-```
-
-### tech_stack_tb
-
-```sql
-create table tech_stack_tb
-(
-    id   integer generated by default as identity,
-    name varchar(255),
-    primary key (id)
-)
-```
-
-### user_tb
-
-```sql
-create table user_tb
-(
-    company_id integer,
-    id         integer generated by default as identity,
-    created_at timestamp(6),
-    email      varchar(255),
-    file_url   varchar(255),
-    password   varchar(255),
-    user_type  varchar(255) not null,
-    username   varchar(255) unique,
-    primary key (id)
-)
-```
-
-### work_field_tb
-
-```sql
-create table work_field_tb
-(
-    id   integer generated by default as identity,
-    name varchar(255),
-    primary key (id)
-)
-```
-
-# 보완할 점
-
-### 알림
-
-- 기업 - 유저가 지원할 경우 기업에게 알림 기능
-- 유저 - 기업이 지원상태를 변경할 경우 유저에게 알림 기능
-
-### 페이징
-
-- 다수의 데이터를 페이지 별로 깔끔하게 만들어 주는 기능
-
-### 검색
-
-- 기업, 공고, 유저를 각각 따로 검색하는 기능
-- 기술스택, 주소, 연봉에 따라 검색하는 기능
-- 통합 검색 기능
-
-# 느낀점
-
-- 개발 시작할 때 팀원들과 함께 전반적인 프로젝트의 전체적인 진행 방향을 같이 확인해서 협업이 좀더 잘 이루어지게 하고 싶다
-- 임무 배정시 좀더 세밀한 임무목록을 작성해서 팀원들이 좀더 신속하게 개발을 할 수 있도록 만들고 싶다
-- 회의를 할때 코드리뷰를 같이 하면서 팀원들이 좀더 코드를 잘 만들어서 수정 보완이 잘 될 수 있도록 만들고 싶다 
-- 프로젝트의 진행에 대한 설계를 좀 더 잘하고 싶다. 설계를 더 잘하면 프로젝트의 진행 속도가 좀 더 나아질 것 같다
+![문제1](docs/images/문제1.png)
+![문제2](docs/images/문제2.png)
